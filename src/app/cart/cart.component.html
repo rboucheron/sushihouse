@@ -1,0 +1,60 @@
+<div class=" mt-32">
+    <table class="w-full table-fixed border-spacing-4 text-white ">
+        <thead>
+            <tr>
+                <th class="text-2xl font-serif font-light">Détails</th>
+                <th class="text-2xl font-serif font-light">Quantité</th>
+                <th class="text-2xl font-serif font-light">Total</th>
+            </tr>
+        </thead>
+        <tbody class="w-full">
+            <tr *ngFor="let box of boxs" class="w-full border-b border-dashed mb-16">
+                <td class="flex flex-col p-4 items-center">
+                    <h2 class="text-xl p-2 text-white">{{ box.name }}</h2><img [src]="box.image"
+                        class="size-52 rounded-md cover" [alt]=" box.name">
+                </td>
+                <td class="border-spacing-4  ">
+                    <div
+                        class="w-1/2 m-auto flex justify-center space-x-8 items-center border border-white rounded-full">
+                        <button class="p-2 text-2xl" (click)="removeBoxToCard(box.id)">-</button> <span
+                            class="p-2  text-xl">{{box.quantity}}</span>
+                        <button class="p-2  text-2xl" (click)="addBoxToCard(box.id)">+</button>
+                    </div>
+                </td>
+                <td class="border-spacing-4">
+                    <p class="w-full text-2xl text-center">{{ box.price | currency :
+                        'EUR'}}</p>
+                </td>
+            </tr>
+            <tr *ngFor="let drink of drinks" class="w-full border-b border-dashed mb-16">
+                <td class="flex flex-col p-4 items-center">
+                    <h2 class="text-xl p-2 text-white">{{ drink.name }}</h2><img [src]="drink.image"
+                        class="size-52 rounded-md cover" [alt]=" drink.name">
+                </td>
+                <td class="border-spacing-4  ">
+                    <div
+                        class="w-1/2 m-auto flex justify-center space-x-8 items-center border border-white rounded-full">
+                        <button class="p-2 text-2xl" (click)="removeDrinkToCard(drink.id)">-</button> <span
+                            class="p-2  text-xl">{{drink.quantity}}</span>
+                        <button class="p-2  text-2xl" (click)="addDrinkToCard(drink.id)">+</button>
+                    </div>
+                </td>
+                <td class="border-spacing-4">
+                    <p class="w-full text-2xl text-center">{{ drink.price | currency :
+                        'EUR'}}</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="w-full mb-12 mt-12">
+        <p class="text-white text-2xl text-center w-full">Total de la commande : {{ total | currency :'EUR' }}</p>
+    </div>
+    <div class="w-1/2 m-auto flex justify-center items-center space-x-6 items-center  mb-4">
+        <button (click)="deleteAll()"
+            class=" p-3 rounded-2xl text-white text-sm font-serif bg-red-500 hover:bg-transparent ">Vider le
+            panier</button>
+
+        <button class=" p-3 rounded-2xl text-white text-sm font-serif bg-green-500 hover:bg-transparent "
+            routerLink="/">Valider le Panier</button>
+    </div>
+</div>

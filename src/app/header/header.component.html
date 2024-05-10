@@ -1,0 +1,41 @@
+<nav class="fixed top-0 z-50 bg-zinc-800 opacity-90 p-0 grid grid-cols-2 lg:grid-cols-3  w-full gap-4">
+    <div>
+        <a routerLink="/"><img src="./assets/images/logoo.png" class=" ml-4 mb-2 w-16" alt="Logo sushi House"></a>
+    </div>
+    <div class="lg:grid grid-cols-3 items-center  hidden">
+        <a routerLink="/" class="text-slate-50 text-center font-serif text-xl">Acceuil</a>
+        <a routerLink="menus" class="text-slate-50 text-center font-serif text-xl">Menus</a>
+        <a routerLink="boisson" class="text-slate-50 text-center font-serif text-xl">Boissons</a>
+    </div>
+    <div class="grid place-items-center xl:place-items-end">
+        <div class="w-1/2 m-auto  xl:w-1/4 xl:ml-auto xl::mt-auto xl:mb-auto mr-4 flex  ">
+            <a href="" class="flex items-end mr-4 text-white text-xs" routerLink="cart">
+                <lucide-icon name="ShoppingBasket" color="#ffffff" [size]="30"
+                    [strokeWidth]="1.5"></lucide-icon>{{itemsCount ()}}
+            </a>
+
+            <div class="flex items-end mr-4 lg:hidden " (click)="toggleBurguer() " [ngClass]="{'hidden': burguer}">
+                <lucide-icon name="Menu" color="#ffffff" [size]="30" [strokeWidth]="1.5"></lucide-icon>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="hidden" [ngClass]="{'hidden': !burguer}">
+
+
+    <div class=" w-full h-full bg-zinc-800 opacity-75 block absolute z-50">
+     
+        <div class="mt-11 pt-10 flex justify-center w-full">
+            <a routerLink="/" class="text-slate-50 text-center font-serif text-3xl " (click)="toggleBurguer() ">Acceuil</a>
+        </div>
+        <div class="mt-11  flex justify-center  w-full">
+            <a routerLink="menus" class="text-slate-50 text-center font-serif text-3xl " (click)="toggleBurguer() ">Menus</a>
+        </div>
+        <div class="mt-11  flex justify-center w-full">
+            <a routerLink="boisson" class="text-slate-50 text-center font-serif text-3xl " (click)="toggleBurguer() ">Boissons</a>
+        </div>
+    </div>
+
+
+</div>

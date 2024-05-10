@@ -1,0 +1,18 @@
+@font-face {
+    font-family: hiromisake;
+    src: url(./assets/fonts/HIROMISAKE.ttf);
+}
+
+@font-face {
+    font-family: Josefin;
+    src: url(./assets/fonts/JosefinSans-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: Lilita;
+    src: url(./assets/fonts/LilitaOne-Regular.ttf);
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
