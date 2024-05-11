@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { LocalService } from '../local.service';
-import { OnInit } from '@angular/core';
-import { Box } from '../../model/box';
-import { Drink } from '../../model/drink';
+import {Component} from '@angular/core';
+import {LocalService} from '../local.service';
+import {OnInit} from '@angular/core';
+import {Box} from '../../model/box';
+import {Drink} from '../../model/drink';
 
 @Component({
   selector: 'app-cart',
@@ -13,16 +13,19 @@ export class CartComponent implements OnInit {
   public drinks!: Array<Drink>;
   public total!: number;
 
-  constructor(private LocalService: LocalService) {}
+  constructor(private LocalService: LocalService) {
+  }
 
   ngOnInit() {
     this.findAllItems();
     this.SetTotal();
   }
+
   private findAllItems(): void {
     this.boxs = this.LocalService.GetBox();
     this.drinks = this.LocalService.GetDrink();
   }
+
   public addBoxToCard(id: number): void {
     const index: number = this.boxs.findIndex(
       (element: Box) => element.id === id
@@ -34,6 +37,7 @@ export class CartComponent implements OnInit {
     }
     this.SetTotal();
   }
+
   public addDrinkToCard(id: number): void {
     const index: number = this.drinks.findIndex(
       (element: Drink) => element.id === id
@@ -45,6 +49,7 @@ export class CartComponent implements OnInit {
     }
     this.SetTotal();
   }
+
   public removeBoxToCard(id: number): void {
     const index: number = this.boxs.findIndex(
       (element: Box) => element.id === id
@@ -60,6 +65,7 @@ export class CartComponent implements OnInit {
     }
     this.SetTotal();
   }
+
   public removeDrinkToCard(id: number): void {
     const index: number = this.drinks.findIndex(
       (element: Drink) => element.id === id
@@ -76,17 +82,21 @@ export class CartComponent implements OnInit {
     }
     this.SetTotal();
   }
+
   public deleteBox(id: number): void {
     this.LocalService.clearCartBox(id);
     this.findAllItems();
   }
+
   public deleteDrink(id: number): void {
     this.LocalService.clearCartDrink(id);
     this.findAllItems();
   }
+
   public deleteAll(): void {
     this.LocalService.SetDrinks([]), this.LocalService.SetBoxs([]);
     this.findAllItems();
+    this.SetTotal();
   }
 
   private totalBoxPrice() {
@@ -96,6 +106,7 @@ export class CartComponent implements OnInit {
     });
     return totalPrice;
   }
+
   private totalDrinkPrice() {
     let totalPrice: number = 0;
     this.drinks.forEach((drink: any) => {
