@@ -15,6 +15,7 @@ import { CartComponent } from './cart/cart.component';
 import { DrinkcardComponent } from './drinkcard/drinkcard.component';
 import { DrinkcardsComponent } from './drinkcards/drinkcards.component';
 import { ErreurComponent } from './erreur/erreur.component';
+import { ToastComponent } from './toast/toast.component';
 
 
 
@@ -31,7 +32,8 @@ import { ErreurComponent } from './erreur/erreur.component';
     CartComponent,
     DrinkcardComponent,
     DrinkcardsComponent,
-    ErreurComponent
+    ErreurComponent,
+    ToastComponent
   ],
 
   imports: [

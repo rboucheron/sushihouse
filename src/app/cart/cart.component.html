@@ -1,4 +1,4 @@
-<div class=" mt-32">
+<div class=" mt-32" *ngIf="total != 0">
     <table class="w-full table-fixed border-spacing-4 text-white ">
         <thead>
             <tr>
@@ -55,6 +55,14 @@
             panier</button>
 
         <button class=" p-3 rounded-2xl text-white text-sm font-serif bg-green-500 hover:bg-transparent "
-            routerLink="/">Valider le Panier</button>
+                (click)="finishAll()">Valider le Panier</button>
     </div>
 </div>
+
+<div class=" mt-32" *ngIf="total === 0">
+  <h1 class="text-center text-white text-3xl font-bold mt-4">Votre Panier est Vide ...</h1>
+
+</div>
+
+
+<app-toast></app-toast>

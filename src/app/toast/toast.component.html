@@ -1,0 +1,5 @@
+<div class="fixed top-24 right-4 space-y-2">
+  <div *ngFor="let toast of toasts" [ngClass]="getToastClass(toast.type)" class="p-4 rounded shadow">
+    {{ toast.message }}
+  </div>
+</div>

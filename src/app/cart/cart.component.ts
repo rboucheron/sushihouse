@@ -1,17 +1,23 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {LocalService} from '../local.service';
 import {OnInit} from '@angular/core';
 import {Box} from '../../model/box';
 import {Drink} from '../../model/drink';
+import { ToastComponent } from '../toast/toast.component';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
 })
 export class CartComponent implements OnInit {
+
   public boxs!: Array<Box>;
   public drinks!: Array<Drink>;
-  public total!: number;
+  public total: number = 0;
+
+  @ViewChild(ToastComponent) toastComponent!: ToastComponent;
+
+
 
   constructor(private LocalService: LocalService) {
   }
@@ -97,6 +103,11 @@ export class CartComponent implements OnInit {
     this.LocalService.SetDrinks([]), this.LocalService.SetBoxs([]);
     this.findAllItems();
     this.SetTotal();
+  }
+
+  public finishAll(): void {
+    this.deleteAll();
+    this.toastComponent.showToast('Votre panier a été validé avec succès!', 'success');
   }
 
   private totalBoxPrice() {
